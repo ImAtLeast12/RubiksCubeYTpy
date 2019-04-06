@@ -8,15 +8,9 @@ class Cube:
             'R': [37,38,39,40,41,42,43,44,45,],    
             'B': [46,47,48,59,50,51,52,53,54,], 
         }
-
-
-
-
-
     #   U
     #L  F   R   B
     #   D
-
     def printCube(self):
         a = """
                       [%s][%s][%s]
@@ -58,7 +52,33 @@ class Cube:
 
             
         return x + y + z
+
+    def moveUP(self):
+        tempx = self.cube.get('U')[2]
+        tempy = self.cube.get('U')[5]
+        tempz = self.cube.get('U')[8]
+        
+        self.cube.get('U')[2] = self.cube.get('F')[2]
+        self.cube.get('U')[5] = self.cube.get('F')[5]
+        self.cube.get('U')[8] = self.cube.get('F')[8]
+
+        self.cube.get('F')[2] = self.cube.get('D')[2]
+        self.cube.get('F')[5] = self.cube.get('D')[5]
+        self.cube.get('F')[8] = self.cube.get('D')[8]
+
+        self.cube.get('D')[2] = self.cube.get('B')[6]
+        self.cube.get('D')[5] = self.cube.get('B')[3]
+        self.cube.get('D')[8] = self.cube.get('B')[0]
+
+        self.cube.get('B')[6] = tempx
+        self.cube.get('B')[3] = tempy
+        self.cube.get('B')[0] = tempz
+        
+        
+        
     
 a = Cube()
+a.printCube()
+a.moveUP()
 a.printCube()
 
